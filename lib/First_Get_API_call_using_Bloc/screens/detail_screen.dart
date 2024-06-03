@@ -19,17 +19,17 @@ class DetailScreen extends StatelessWidget {
               Center(
                 child: CircleAvatar(
                   maxRadius: 60.0,
-                  backgroundImage: NetworkImage(e.avatar.toString()),
+                  backgroundImage: NetworkImage(e.data![0].avatar.toString()),
                 ),
               ),
               const SizedBox(height: 50.0),
               Text(
-                e.firstname + " " + e.lastname,
+                e.data![0].firstName.toString() + " " + e.data![0].lastName.toString(),
                 style: const TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 30.0),
               ),
               Text(
-                e.email,
+                e.data![0].email.toString(),
                 style: const TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 20.0),
               ),

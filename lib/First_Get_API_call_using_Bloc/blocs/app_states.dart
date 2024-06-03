@@ -9,7 +9,8 @@ class UserLoadingState extends UserState
 class UserLoadedState extends UserState
 {
   UserLoadedState(this.users);
-  final List<UserModel> users;
+  // final List<UserModel> users;
+final UserModel users;
 }
 /// data error loading state
 class UserErrorState extends UserState

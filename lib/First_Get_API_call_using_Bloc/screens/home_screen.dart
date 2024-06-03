@@ -57,9 +57,9 @@ class HomeScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is UserLoadedState) {
-              List<UserModel> userList = state.users;
+              var userList = state.users;
               return ListView.builder(
-                itemCount: userList.length,
+                itemCount: userList.data!.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -70,38 +70,38 @@ class HomeScreen extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) {
                               return DetailScreen(
-                                e: userList[index],
+                                e: userList,
                               );
                             },
                           ),
                         );
                       },
                       child: Card(
-                        child: ListTile(
-                          title: Text(userList[index].firstname.toString()),
-                          subtitle: Text(userList[index].lastname.toString()),
-                          trailing: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(userList[index].avatar.toString()),
-                          ),
-                        ),
                         // child: ListTile(
-                        //   title: Text(userList[index].data![index].firstName.toString()),
-                        //   subtitle: Text(userList[index].data![index].lastName.toString()),
+                        //   title: Text(userList[index].firstname.toString()),
+                        //   subtitle: Text(userList[index].lastname.toString()),
                         //   trailing: CircleAvatar(
-                        //     backgroundImage: NetworkImage(
-                        //         userList[index].data![index].avatar.toString()),
+                        //     backgroundImage:
+                        //         NetworkImage(userList[index].avatar.toString()),
                         //   ),
                         // ),
+                        child: ListTile(
+                          title: Text(userList.data![index].firstName.toString()),
+                          subtitle: Text(userList.data![index].lastName.toString()),
+                          trailing: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                userList.data![index].avatar.toString()),
+                          ),
+                        ),
                       ),
                     ),
                   );
                 },
               );
             } else if (state is UserErrorState) {
-              return const Center(
+              return  Center(
                 child: Text(
-                  "Error",
+                  "${state.errormsg}",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               );
