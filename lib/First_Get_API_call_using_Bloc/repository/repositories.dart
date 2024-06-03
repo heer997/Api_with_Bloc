@@ -1,0 +1,23 @@
+import "dart:convert";
+import "package:api_with_bloc/First_Get_API_call_using_Bloc/Model/user_model.dart";
+import "package:http/http.dart" as http;
+import "package:http/http.dart";
+
+class UserRepository {
+  String endpoint = "https://reqres.in/api/users?page=2";
+
+  Future<List<UserModel>> getUsers() async {
+    Response response = await http.get(
+      Uri.parse(endpoint),
+    );
+
+    if (response.statusCode == 200) {
+      final List result = jsonDecode(response.body)["data"];
+      return result.map((e) {
+        return UserModel.fromJson(e);
+      }).toList();
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
+}
