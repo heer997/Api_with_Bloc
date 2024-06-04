@@ -9,11 +9,11 @@ class UserModel {
 
   UserModel(
       {this.page,
-        this.perPage,
-        this.total,
-        this.totalPages,
-        this.data,
-        this.support});
+      this.perPage,
+      this.total,
+      this.totalPages,
+      this.data,
+      this.support});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
@@ -27,7 +27,7 @@ class UserModel {
       });
     }
     support =
-    json['support'] != null ? new Support.fromJson(json['support']) : null;
+        json['support'] != null ? new Support.fromJson(json['support']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -92,8 +92,6 @@ class Support {
     return data;
   }
 }
-
-
 
 /// 2nd Model Class
 // class UserModel {

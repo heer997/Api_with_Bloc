@@ -12,12 +12,9 @@ class UserRepository {
     );
 
     if (response.statusCode == 200) {
-      final  result = jsonDecode(response.body);
+      final result = jsonDecode(response.body);
       print(response.body);
       return UserModel.fromJson(result);
-      // return result.map((e) {
-      //   return UserModel.fromJson(e);
-      // }).toList();
     } else {
       throw Exception(response.reasonPhrase);
     }

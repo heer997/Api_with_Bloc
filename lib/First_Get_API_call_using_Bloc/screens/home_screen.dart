@@ -1,4 +1,3 @@
-import "package:api_with_bloc/First_Get_API_call_using_Bloc/Model/user_model.dart";
 import "package:api_with_bloc/First_Get_API_call_using_Bloc/blocs/app_bloc.dart";
 import "package:api_with_bloc/First_Get_API_call_using_Bloc/blocs/app_events.dart";
 import "package:api_with_bloc/First_Get_API_call_using_Bloc/blocs/app_states.dart";
@@ -77,17 +76,11 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                       child: Card(
-                        // child: ListTile(
-                        //   title: Text(userList[index].firstname.toString()),
-                        //   subtitle: Text(userList[index].lastname.toString()),
-                        //   trailing: CircleAvatar(
-                        //     backgroundImage:
-                        //         NetworkImage(userList[index].avatar.toString()),
-                        //   ),
-                        // ),
                         child: ListTile(
-                          title: Text(userList.data![index].firstName.toString()),
-                          subtitle: Text(userList.data![index].lastName.toString()),
+                          title:
+                              Text(userList.data![index].firstName.toString()),
+                          subtitle:
+                              Text(userList.data![index].lastName.toString()),
                           trailing: CircleAvatar(
                             backgroundImage: NetworkImage(
                                 userList.data![index].avatar.toString()),
@@ -99,10 +92,11 @@ class HomeScreen extends StatelessWidget {
                 },
               );
             } else if (state is UserErrorState) {
-              return  Center(
+              return Center(
                 child: Text(
-                  "${state.errormsg}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  state.errormsg,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               );
             }

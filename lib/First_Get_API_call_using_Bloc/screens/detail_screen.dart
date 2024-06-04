@@ -24,7 +24,9 @@ class DetailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 50.0),
               Text(
-                e.data![0].firstName.toString() + " " + e.data![0].lastName.toString(),
+                e.data![0].firstName.toString() +
+                    " " +
+                    e.data![0].lastName.toString(),
                 style: const TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 30.0),
               ),
